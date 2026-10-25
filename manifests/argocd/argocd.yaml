@@ -12,7 +12,7 @@ spec:
       helm:
         releaseName: argocd
         valueFiles:
-          - $values/homelab/helm/argocd/values.yaml
+          - $values/helm/argocd/values.yaml
     - repoURL: https://github.com/MiniHash/homelab.git
       targetRevision: main
       ref: values

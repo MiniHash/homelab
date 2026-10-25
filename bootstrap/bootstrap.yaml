@@ -10,7 +10,7 @@ spec:
   source:
     repoURL: https://github.com/MiniHash/homelab.git
     targetRevision: main
-    path: homelab/manifests/argocd
+    path: manifests/argocd
   destination:
     server: https://kubernetes.default.svc
     namespace: argocd
@@ -18,4 +18,3 @@ spec:
     automated:
       prune: true
       selfHeal: true
-      
