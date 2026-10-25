@@ -1,0 +1,3 @@
+# Overrides for the Argo CD Helm chart go here.
+dex:
+  enabled: false   # SSO component, not needed for a homelab
