@@ -8,6 +8,7 @@ GitOps configuration for my homelab Kubernetes cluster. [Argo CD](https://argo-c
 |-----|----------------|---------|-----------|---------|
 | Argo CD | `argo-cd` from [argo-helm](https://argoproj.github.io/argo-helm) | 10.1.3 | `argocd` | GitOps controller; manages itself (Dex SSO disabled) |
 | MetalLB | `metallb` from [metallb.github.io](https://metallb.github.io/metallb) | 0.15.2 | `metallb-system` | Bare-metal LoadBalancer implementation |
+| Longhorn | `longhorn` from [charts.longhorn.io](https://charts.longhorn.io) | 1.13.0 | `longhorn-system` | Persistent block storage, UI on a MetalLB IP. See [`helm/longhorn/README.md`](helm/longhorn/README.md) |
 | MetalLB config | plain manifests in `config/metallb` | n/a | `metallb-system` | Address pool and L2 advertisement |
 
 ### MetalLB network
@@ -24,9 +25,12 @@ manifests/argocd/       # Argo CD Application objects (picked up by the root app
   argocd.yaml           # Argo CD managing itself
   metallb.yaml          # MetalLB Helm chart (sync-wave 0)
   metallb-config.yaml   # MetalLB pool/advertisement (sync-wave 1)
+  longhorn.yaml         # Longhorn storage (sync-wave 1)
 helm/                   # Helm values overrides, one folder per chart
   argocd/values.yaml
   metallb/values.yaml
+  longhorn/values.yaml  # plus README.md with technical notes
+  kube-prometheus-stack/values.yaml  # saved for later, app not deployed yet
 config/                 # Raw Kubernetes manifests deployed by Applications
   metallb/ipaddresspool.yaml
 ```
