@@ -21,6 +21,12 @@ spec:
   destination:
     server: https://kubernetes.default.svc
     namespace: longhorn-system
+  ignoreDifferences:
+    # Chart renders nodePort: null; Kubernetes assigns one for LoadBalancer services.
+    - kind: Service
+      name: longhorn-frontend
+      jqPathExpressions:
+        - .spec.ports[].nodePort
   syncPolicy:
     automated:
       prune: true
