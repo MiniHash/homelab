@@ -4,7 +4,7 @@ grafana:
     type: LoadBalancer   # expose via MetalLB
   persistence:
     enabled: true
-    storageClassName: standard
+    storageClassName: longhorn
     size: 5Gi
 
 prometheus:
@@ -13,7 +13,7 @@ prometheus:
     storageSpec:
       volumeClaimTemplate:
         spec:
-          storageClassName: standard
+          storageClassName: longhorn
           accessModes: ["ReadWriteOnce"]
           resources:
             requests:
@@ -24,7 +24,7 @@ alertmanager:
     storage:
       volumeClaimTemplate:
         spec:
-          storageClassName: standard
+          storageClassName: longhorn
           accessModes: ["ReadWriteOnce"]
           resources:
             requests:

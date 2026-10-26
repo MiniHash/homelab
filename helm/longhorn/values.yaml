@@ -1,0 +1,4 @@
+# Overrides for the Longhorn chart go here.
+service:
+  ui:
+    type: LoadBalancer   # expose the UI via MetalLB (no built-in auth, keep it LAN-only)
