@@ -2,3 +2,8 @@
 service:
   ui:
     type: LoadBalancer   # expose the UI via MetalLB (no built-in auth, keep it LAN-only)
+
+persistence:
+  defaultClassReplicaCount: 1   # single-node minikube
+defaultSettings:
+  defaultReplicaCount: 1
